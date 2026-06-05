@@ -36,16 +36,16 @@
 | --- | --- | --- | --- |
 | Phase 0 | 프로젝트 거버넌스 | 완료 | `AGENTS.md`, `requirements.md`, `RELEASE.md`, GitHub Actions |
 | Phase 1 | Python 패키지/TDD 기반 | 완료 | `docs/development_plan.md`, `pyproject.toml`, `src/occupant_safety/`, `tests/` |
-| Phase 2 | 감지 입력 및 공통 모델 | 대기 | `docs/development_plan.md`, `docs/traceability_matrix.md` |
+| Phase 2 | 감지 입력 및 공통 모델 | 완료 | `docs/development_plan.md`, `docs/traceability_matrix.md`, `src/occupant_safety/detection/events.py`, `src/occupant_safety/settings.py` |
 | Phase 3 | 위험도 및 알림 정책 | 대기 | `docs/development_plan.md`, `docs/traceability_matrix.md` |
 | Phase 4 | 감사 로그와 상태 조회 | 대기 | `docs/development_plan.md`, `docs/traceability_matrix.md` |
 | Phase 5 | 통합 시뮬레이션 및 릴리즈 준비 | 대기 | `docs/development_plan.md`, `RELEASE.md` |
 
 ## 다음 작업 후보
 
-1. Phase 2 시작 전 감지 이벤트 모델 Red 테스트 작성
-2. Phase 2 최소 구현으로 Green 달성
-3. `docs/traceability_matrix.md`에 Phase 2 실제 코드와 테스트 경로 반영
+1. Phase 3 시작 전 어린이/애완동물 감지 및 위험도 정책 Red 테스트 작성
+2. Phase 3 최소 구현으로 Green 달성
+3. `docs/traceability_matrix.md`에 Phase 3 실제 코드와 테스트 경로 반영
 
 ## 최근 검증
 
@@ -53,6 +53,15 @@
 - 실행 환경: Windows, Python 3.14.3 로컬 인터프리터
 - `python -m compileall src tests`: 통과
 - `python -m pytest --cov=src --cov-branch --cov-report=term-missing`: 1 passed, coverage 100%
+- `python -m ruff check .`: 통과
+- `python -m ruff format --check .`: 통과
+- `python -m mypy src`: 통과
+- 참고: CI는 Python 3.11 및 3.12 매트릭스로 검증한다.
+
+- Phase 2 로컬 검증일: 2026-06-05
+- 실행 환경: Windows, Python 3.14.3 로컬 인터프리터
+- `python -m compileall src tests`: 통과
+- `python -m pytest --cov=src --cov-branch --cov-report=term-missing`: 31 passed, coverage 100%
 - `python -m ruff check .`: 통과
 - `python -m ruff format --check .`: 통과
 - `python -m mypy src`: 통과
