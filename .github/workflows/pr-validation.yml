@@ -1,0 +1,72 @@
+name: PR Validation
+
+on:
+  pull_request:
+    branches:
+      - main
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+jobs:
+  quality-gate:
+    name: Python Quality Gate
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version:
+          - "3.11"
+          - "3.12"
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: Install package and quality tools
+        run: |
+          python -m pip install --upgrade pip
+          if [ -f pyproject.toml ]; then
+            python -m pip install -e ".[dev]"
+          else
+            python -m pip install pytest pytest-cov ruff mypy
+          fi
+
+      - name: Compile
+        run: |
+          if [ -d src ] || [ -d tests ]; then
+            python -m compileall src tests
+          else
+            echo "src/tests are not created yet; skipping compile bootstrap check."
+          fi
+
+      - name: Lint
+        run: ruff check .
+
+      - name: Format check
+        run: ruff format --check .
+
+      - name: Type check
+        run: |
+          if [ -d src ]; then
+            mypy src
+          else
+            echo "src is not created yet; skipping mypy bootstrap check."
+          fi
+
+      - name: Test with coverage
+        run: |
+          if [ -d tests ]; then
+            python -m pytest --cov=src --cov-branch --cov-report=term-missing
+          else
+            echo "tests are not created yet; skipping pytest bootstrap check."
+          fi
+
