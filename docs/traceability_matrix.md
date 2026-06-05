@@ -40,8 +40,8 @@
 | NFR-005 | TC-010 | IMPL-008 | REL-001 | Planned |
 | NFR-006 | TC-001, TC-010 | IMPL-001, IMPL-008 | REL-001 | Planned |
 | NFR-007 | TC-012 | IMPL-009 | REL-001 | Planned |
-| NFR-008 | TC-017 | IMPL-012 | REL-001 | Planned |
-| NFR-009 | TC-017 | IMPL-012 | REL-001 | Planned |
+| NFR-008 | TC-017 | IMPL-012 | REL-001 | Implemented |
+| NFR-009 | TC-017 | IMPL-012 | REL-001 | Implemented |
 | NFR-010 | TC-018 | IMPL-012 | REL-001 | Planned |
 | NFR-011 | TC-007 | IMPL-007 | REL-001 | Planned |
 | NFR-012 | TC-019 | IMPL-012 | REL-001 | Planned |
@@ -66,7 +66,7 @@
 | TC-014 | FR-015 | `tests/integration/test_simulated_alert_flow.py` | Planned |
 | TC-015 | NFR-001 | `tests/unit/test_policy_determinism.py` | Planned |
 | TC-016 | NFR-002 | `tests/unit/test_risk_policy_performance.py` | Planned |
-| TC-017 | NFR-008, NFR-009 | `.github/workflows/pr-validation.yml` | Planned |
+| TC-017 | NFR-008, NFR-009 | `.github/workflows/pr-validation.yml`, `pyproject.toml`, `tests/unit/test_package_bootstrap.py` | Implemented |
 | TC-018 | NFR-010 | PR template or review checklist | Planned |
 | TC-019 | NFR-012 | `RELEASE.md` checklist | Planned |
 
@@ -85,7 +85,7 @@
 | IMPL-009 | `src/occupant_safety/settings.py` | FR-012, NFR-007 | TC-012 | Planned |
 | IMPL-010 | `src/occupant_safety/state.py` | FR-014 | TC-013 | Planned |
 | IMPL-011 | `src/occupant_safety/simulation.py` | FR-015 | TC-014 | Planned |
-| IMPL-012 | `.github/workflows/pr-validation.yml`, `RELEASE.md` | NFR-008, NFR-009, NFR-010, NFR-012 | TC-017, TC-018, TC-019 | Planned |
+| IMPL-012 | `.github/workflows/pr-validation.yml`, `pyproject.toml`, `src/occupant_safety/__init__.py`, `tests/unit/test_package_bootstrap.py`, `RELEASE.md` | NFR-008, NFR-009, NFR-010, NFR-012 | TC-017, TC-018, TC-019 | In Progress |
 
 ## 6. 릴리즈 추적
 
@@ -102,5 +102,4 @@
 | 모든 테스트 ID가 요구사항으로 역추적되는가 | Yes |
 | 모든 구현 항목이 요구사항과 테스트로 역추적되는가 | Yes |
 | 릴리즈 항목이 요구사항 묶음으로 추적되는가 | Yes |
-| 실제 코드 경로가 존재하는가 | No, Phase 1 이후 갱신 필요 |
-
+| 실제 코드 경로가 존재하는가 | Partial, Phase 1 package foundation exists and Phase 2 domain paths remain planned |

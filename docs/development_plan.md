@@ -32,7 +32,7 @@ flowchart LR
 | Phase | 목표 | 주요 산출물 | 종료 조건 |
 | --- | --- | --- | --- |
 | Phase 0 | 거버넌스와 추적 기반 확보 | `AGENTS.md`, `requirements.md`, `RELEASE.md`, GitHub Actions, `MEMORY.md`, traceability | 문서와 PR 검증 정책이 존재하고 `git diff --check` 통과 |
-| Phase 1 | Python 프로젝트/TDD 기반 구성 | `pyproject.toml`, 패키지 구조, 테스트 구조, 품질 도구 설정 | 빈 구현 상태에서도 CI 부트스트랩 검증 통과 |
+| Phase 1 | Python 프로젝트/TDD 기반 구성 | `pyproject.toml`, 패키지 구조, 테스트 구조, 품질 도구 설정 | 완료 |
 | Phase 2 | 감지 입력과 공통 모델 구현 | 감지 이벤트 모델, 입력 검증, 설정 모델 | FR-001, FR-012, FR-013 관련 테스트 통과 |
 | Phase 3 | 어린이/애완동물 감지 및 위험도 정책 구현 | 감지 정책, 위험도 산정, 알림 단계 결정 | FR-002~FR-007, NFR-001 관련 테스트 통과 |
 | Phase 4 | 알림 억제, 어댑터, 감사 로그 구현 | 알림 쿨다운, 가짜 알림 어댑터, 감사 로그, 상태 조회 | FR-008~FR-011, FR-014, NFR-003~NFR-006 관련 테스트 통과 |
@@ -171,4 +171,3 @@ flowchart LR
 - 커버리지 기준을 만족한다.
 - `docs/traceability_matrix.md`에서 미추적 요구사항이 없다.
 - `RELEASE.md` 기준의 릴리즈 체크리스트가 완료된다.
-
