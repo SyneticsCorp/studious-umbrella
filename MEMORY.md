@@ -34,8 +34,8 @@
 
 | Phase | 이름 | 상태 | 기준 문서 |
 | --- | --- | --- | --- |
-| Phase 0 | 프로젝트 거버넌스 | 진행 중 | `AGENTS.md`, `requirements.md`, `RELEASE.md`, GitHub Actions |
-| Phase 1 | Python 패키지/TDD 기반 | 대기 | `docs/development_plan.md` |
+| Phase 0 | 프로젝트 거버넌스 | 완료 | `AGENTS.md`, `requirements.md`, `RELEASE.md`, GitHub Actions |
+| Phase 1 | Python 패키지/TDD 기반 | 완료 | `docs/development_plan.md`, `pyproject.toml`, `src/occupant_safety/`, `tests/` |
 | Phase 2 | 감지 입력 및 공통 모델 | 대기 | `docs/development_plan.md`, `docs/traceability_matrix.md` |
 | Phase 3 | 위험도 및 알림 정책 | 대기 | `docs/development_plan.md`, `docs/traceability_matrix.md` |
 | Phase 4 | 감사 로그와 상태 조회 | 대기 | `docs/development_plan.md`, `docs/traceability_matrix.md` |
@@ -43,11 +43,20 @@
 
 ## 다음 작업 후보
 
-1. `pyproject.toml` 생성 및 `pytest`, `pytest-cov`, `ruff`, `mypy` 설정
-2. `src/occupant_safety/`와 `tests/` 기본 구조 생성
-3. Phase 1 Red 테스트 작성
-4. 최소 구현으로 Green 달성
-5. `docs/traceability_matrix.md`에 실제 코드 경로와 테스트 경로 반영
+1. Phase 2 시작 전 감지 이벤트 모델 Red 테스트 작성
+2. Phase 2 최소 구현으로 Green 달성
+3. `docs/traceability_matrix.md`에 Phase 2 실제 코드와 테스트 경로 반영
+
+## 최근 검증
+
+- Phase 1 로컬 검증일: 2026-06-05
+- 실행 환경: Windows, Python 3.14.3 로컬 인터프리터
+- `python -m compileall src tests`: 통과
+- `python -m pytest --cov=src --cov-branch --cov-report=term-missing`: 1 passed, coverage 100%
+- `python -m ruff check .`: 통과
+- `python -m ruff format --check .`: 통과
+- `python -m mypy src`: 통과
+- 참고: CI는 Python 3.11 및 3.12 매트릭스로 검증한다.
 
 ## 작업 기억 갱신 규칙
 
@@ -55,4 +64,3 @@
 - 중요한 설계 결정은 `현재 기준 결정`에 추가한다.
 - 막힌 문제는 이 파일에 원인, 재현 명령, 다음 조치를 남긴다.
 - 요구사항, 테스트, 코드, 릴리즈 추적이 바뀌면 `docs/traceability_matrix.md`를 우선 갱신하고 이 파일에는 요약만 남긴다.
-
